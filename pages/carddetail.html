@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <img id="event-image" class="card-img-top" alt="Event image">
+            <div class="card-body">
+                <span id="category" class="badge bg-primary mb-2"></span>
+                <h2 id="event-title" class="card-title"></h2>
+                <p id="event-desc" class="card-text"></p>
+                <div class="d-flex gap-3 mt-3">
+                    <div>
+                        <i class="far fa-calendar"></i>
+                        <span id="event-date"></span>
+                    </div>
+                    <div>
+                        <i class="far fa-clock"></i>
+                        <span id="event-time"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URL से parameters को get करें
+        const params = new URLSearchParams(window.location.search);
+        
+        // सभी elements को update करें
+        document.getElementById('event-image').src = decodeURIComponent(params.get('image'));
+        document.getElementById('event-title').textContent = decodeURIComponent(params.get('title'));
+        document.getElementById('event-desc').textContent = decodeURIComponent(params.get('desc'));
+        document.getElementById('event-date').textContent = decodeURIComponent(params.get('date'));
+        document.getElementById('event-time').textContent = decodeURIComponent(params.get('time'));
+        document.getElementById('category').textContent = decodeURIComponent(params.get('category'));
+    </script>
+</body>
+</html>
